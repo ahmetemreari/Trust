@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil - TrustID</title>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Genel Stiller */
+        :root {
+            --primary-color: #2563eb;
+            --primary-dark: #1d4ed8;
+            --primary-light: #60a5fa;
+            --secondary-color: #4f46e5;
+            --accent-color: #0284c7;
+            --text-color: #1e293b;
+            --text-light: #64748b;
+            --background-color: #ffffff;
+            --background-light: #f8fafc;
+            --background-dark: #f1f5f9;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --border-color: #e2e8f0;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.5;
+            color: var(--text-color);
+            background-color: var(--background-light);
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--primary-dark);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background-color: var(--background-color);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 15px 0;
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo a {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--text-color);
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        .nav ul {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .nav a {
+            color: var(--text-color);
+            font-weight: 500;
+        }
+
+        .nav a:hover, .nav a.active {
+            color: var(--primary-color);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            outline: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            color: white;
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background-color: #3730a3;
+            color: white;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* Profil Sayfası */
+        .profile-page {
+            padding: 40px 0;
+        }
+
+        .profile-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--background-color);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--box-shadow);
+            margin-bottom: 30px;
+        }
+
+        .profile-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .profile-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--primary-light);
+        }
+
+        .profile-details h1 {
+            font-size: 2rem;
+            margin-bottom: 5px;
+            color: var(--text-color);
+        }
+
+        .profile-title {
+            color: var(--text-light);
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .trust-score-large {
+            display: flex;
+            align-items: center;
+            background-color: var(--background-light);
+            padding: 8px 15px;
+            border-radius: 20px;
+            display: inline-flex;
+        }
+
+        .score {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .max {
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        .label {
+            font-size: 1rem;
+            color: var(--text-light);
+            margin-left: 5px;
+            font-weight: 500;
+        }
+
+        .profile-badges {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .badge {
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .badge-verified {
+            background-color: rgba(16, 185, 129, 0.1);
+            color: var(--success-color);
+        }
+
+        .badge-premium {
+            background-color: rgba(245, 158, 11, 0.1);
+            color: var(--warning-color);
+        }
+
+        .profile-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn-icon {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .profile-tabs {
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .tabs-list {
+            display: flex;
+            gap: 30px;
+        }
+
+        .tab-item {
+            padding: 15px 5px;
+            font-weight: 600;
+            color: var(--text-light);
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: var(--transition);
+        }
+
+        .tab-item:hover {
+            color: var(--primary-color);
+        }
+
+        .tab-item.active {
+            color: var(--primary-color);
+            border-bottom-color: var(--primary-color);
+        }
+
+        .profile-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 30px;
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .profile-card {
+            background-color: var(--background-color);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            box-shadow: var(--box-shadow);
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-color);
+        }
+
+        .info-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .info-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(37, 99, 235, 0.1);
+            color: var(--primary-color);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .info-content {
+            flex-grow: 1;
+        }
+
+        .info-label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 3px;
+        }
+
+        .info-value {
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .skill-item {
+            margin-bottom: 15px;
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .skill-name {
+            font-weight: 600;
+        }
+
+        .skill-level {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .skill-bar {
+            height: 8px;
+            background-color: var(--background-light);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background-color: var(--primary-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--background-light);
+            color: var(--text-color);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .verification-card {
+            background-color: var(--background-color);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            overflow: hidden;
+        }
+
+        .verification-header {
+            padding: 20px 25px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .verification-title {
+            font-size: 1.2rem;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .verification-title i {
+            color: var(--primary-color);
+        }
+
+        .verification-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 25px;
+        }
+
+        .verification-item {
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            background-color: var(--background-light);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .verification-item:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--box-shadow);
+        }
+
+        .verification-item.verified {
+            border-color: var(--success-color);
+        }
+
+        .verification-icon {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--text-light);
+            text-align: center;
+        }
+
+        .verification-item.verified .verification-icon {
+            color: var(--success-color);
+        }
+
+        .verification-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+
+        .verification-status {
+            text-align: center;
+            font-size: 0.9rem;
+            margin-top: auto;
+            padding-top: 10px;
+        }
+
+        .verified-badge {
+            color: var(--success-color);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .not-verified {
+            color: var(--text-light);
+        }
+
+        .review-card {
+            background-color: var(--background-color);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            overflow: hidden;
+        }
+
+        .review-header {
+            padding: 20px 25px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .review-title {
+            font-size: 1.2rem;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .review-title i {
+            color: var(--primary-color);
+        }
+
+        .review-filter {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .filter-separator {
+            width: 1px;
+            height: 20px;
+            background-color: var(--border-color);
+        }
+
+        .filter-option {
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .filter-option:hover, .filter-option.active {
+            color: var(--primary-color);
+        }
+
+        .review-list {
+            padding: 25px;
+        }
+
+        .review-item {
+            padding: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .review-item:last-child {
+            border-bottom: none;
+        }
+
+        .review-item-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .reviewer {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .reviewer-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .reviewer-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .reviewer-name {
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .review-date {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .review-rating {
+            display: flex;
+            gap: 2px;
+        }
+
+        .star {
+            color: var(--border-color);
+            font-size: 1.2rem;
+        }
+
+        .star.filled {
+            color: var(--warning-color);
+        }
+
+        .review-content {
+            color: var(--text-color);
+            margin-bottom: 15px;
+        }
+
+        .review-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .review-tag {
+            font-size: 0.85rem;
+            padding: 5px 12px;
+            border-radius: 20px;
+            background-color: var(--background-light);
+            color: var(--text-light);
+        }
+
+        /* Duyarlı Tasarım */
+        @media (max-width: 992px) {
+            .profile-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                order: 2;
+            }
+            
+            .main-content {
+                order: 1;
+            }
+            
+            .verification-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                display: none;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .profile-header {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .profile-actions {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .tabs-list {
+                overflow-x: auto;
+                padding-bottom: 5px;
+            }
+            
+            .verification-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .review-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .profile-info {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .profile-badges {
+                justify-content: center;
+            }
+            
+            .trust-score-large {
+                margin-top: 10px;
+            }
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #1e293b;
+            color: white;
+            padding: 30px 0;
+            margin-top: 60px;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 20px;
+        }
+
+        .footer-links-inline {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-links-inline a {
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        .footer-links-inline a:hover {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">Trust<span>ID</span></a>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html">Ana Sayfa</a></li>
+                    <li><a href="search.html">Kişi Ara</a></li>
+                    <li><a href="dashboard.html">Kontrol Paneli</a></li>
+                    <li><a href="verification.html">Doğrulama Merkezi</a></li>
+                    <li><a href="login.html" class="btn btn-primary">Giriş Yap</a></li>
+                </ul>
+            </nav>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <main class="profile-page">
+        <div class="container">
+            <div class="profile-header">
+                <div class="profile-info">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Ahmet Yılmaz" class="profile-image">
+                    <div class="profile-details">
+                        <h1>Ahmet Yılmaz</h1>
+                        <div class="profile-title">Yazılım Geliştirme Uzmanı &amp; Freelancer</div>
+                        <div class="trust-score-large">
+                            <span class="score">87</span>
+                            <span class="max">/100</span>
+                            <span class="label">TrustID Puanı</span>
+                        </div>
+                        <div class="profile-badges">
+                            <div class="badge badge-verified">
+                                <i class="fas fa-check-circle"></i>
+                                Doğrulanmış Profil
+                            </div>
+                            <div class="badge badge-premium">
+                                <i class="fas fa-crown"></i>
+                                Premium Üye
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-actions">
+                    <button class="btn btn-primary btn-icon">
+                        <i class="fas fa-user-plus"></i>
+                        Bağlantı Kur
+                    </button>
+                    <button class="btn btn-outline btn-icon">
+                        <i class="fas fa-envelope"></i>
+                        Mesaj Gönder
+                    </button>
+                </div>
+            </div>
+
+            <div class="profile-tabs">
+                <div class="tabs-list">
+                    <div class="tab-item active">Profil</div>
+                    <div class="tab-item">Değerlendirmeler</div>
+                    <div class="tab-item">Doğrulamalar</div>
+                    <div class="tab-item">İşlem Geçmişi</div>
+                    <div class="tab-item">Hizmetler</div>
+                </div>
+            </div>
+
+            <div class="profile-content">
+                <div class="sidebar">
+                    <div class="profile-card">
+                        <h3 class="card-title">Kişisel Bilgiler</h3>
+                        <div class="info-list">
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="info-content">
+                                    <div class="info-label">Konum</div>
+                                    <div class="info-value">İstanbul, Türkiye</div>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <i class="fas fa-briefcase"></i>
+                                </div>
+                                <div class="info-content">
+                                    <div class="info-label">Meslek</div>
+                                    <div class="info-value">Yazılım Geliştirme Uzmanı</div>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <i class="fas fa-building"></i>
+                                </div>
+                                <div class="info-content">
+                                    <div class="info-label">Şirket</div>
+                                    <div class="info-value">Teknoloji A.Ş.</div>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+                                <div class="info-content">
+                                    <div class="info-label">Eğitim</div>
+                                    <div class="info-value">İstanbul Teknik Üniversitesi</div>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <i class="fas fa-globe"></i>
+                                </div>
+                                <div class="info-content">
+                                    <div class="info-label">Web Sitesi</div>
+                                    <div class="info-value"><a href="#">ahmetyilmaz.com</a></div>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <i class="fas fa-calendar-alt"></i>
+                                </div>
+                                <div class="info-content">
+                                    <div class="info-label">Üyelik Başlangıcı</div>
+                                    <div class="info-value">Nisan 2022</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="profile-card">
+                        <h3 class="card-title">Yetenekler</h3>
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <div class="skill-name">JavaScript</div>
+                                <div class="skill-level">Uzman</div>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 95%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <div class="skill-name">React.js</div>
+                                <div class="skill-level">İleri</div>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <div class="skill-name">Node.js</div>
+                                <div class="skill-level">İleri</div>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <div class="skill-name">Python</div>
+                                <div class="skill-level">Orta</div>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 70%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <div class="skill-name">UX/UI Tasarım</div>
+                                <div class="skill-level">Orta</div>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 65%;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="profile-card">
+                        <h3 class="card-title">Sosyal Medya</h3>
+                        <div class="social-links">
+                            <a href="#" class="social-link" title="LinkedIn">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="social-link" title="GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="#" class="social-link" title="Twitter">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="social-link" title="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="social-link" title="Dribbble">
+                                <i class="fab fa-dribbble"></i>
+                            </a>
+                            <a href="#" class="social-link" title="Medium">
+                                <i class="fab fa-medium-m"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="main-content">
+                    <div class="verification-card">
+                        <div class="verification-header">
+                            <h3 class="verification-title">
+                                <i class="fas fa-shield-alt"></i>
+                                Doğrulamalar
+                            </h3>
+                            <div class="verification-status">4/6 Doğrulama Tamamlandı</div>
+                        </div>
+                        <div class="verification-grid">
+                            <div class="verification-item verified">
+                                <div class="verification-icon">
+                                    <i class="fas fa-id-card"></i>
+                                </div>
+                                <div class="verification-name">Kimlik</div>
+                                <div class="verification-status">
+                                    <span class="verified-badge">
+                                        <i class="fas fa-check-circle"></i>
+                                        Doğrulandı
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="verification-item verified">
+                                <div class="verification-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="verification-name">E-posta</div>
+                                <div class="verification-status">
+                                    <span class="verified-badge">
+                                        <i class="fas fa-check-circle"></i>
+                                        Doğrulandı
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="verification-item verified">
+                                <div class="verification-icon">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div class="verification-name">Telefon</div>
+                                <div class="verification-status">
+                                    <span class="verified-badge">
+                                        <i class="fas fa-check-circle"></i>
+                                        Doğrulandı
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="verification-item verified">
+                                <div class="verification-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="verification-name">Adres</div>
+                                <div class="verification-status">
+                                    <span class="verified-badge">
+                                        <i class="fas fa-check-circle"></i>
+                                        Doğrulandı
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="verification-item">
+                                <div class="verification-icon">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+                                <div class="verification-name">Eğitim</div>
+                                <div class="verification-status">
+                                    <span class="not-verified">Doğrulanmadı</span>
+                                </div>
+                            </div>
+                            <div class="verification-item">
+                                <div class="verification-icon">
+                                    <i class="fas fa-briefcase"></i>
+                                </div>
+                                <div class="verification-name">İş Geçmişi</div>
+                                <div class="verification-status">
+                                    <span class="not-verified">Doğrulanmadı</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-header">
+                            <h3 class="review-title">
+                                <i class="fas fa-star"></i>
+                                Son Değerlendirmeler
+                            </h3>
+                            <div class="review-filter">
+                                <span class="filter-option active">Tümü</span>
+                                <span class="filter-separator"></span>
+                                <span class="filter-option">Olumlu</span>
+                                <span class="filter-separator"></span>
+                                <span class="filter-option">Olumsuz</span>
+                            </div>
+                        </div>
+                        <div class="review-list">
+                            <div class="review-item">
+                                <div class="review-item-header">
+                                    <div class="reviewer">
+                                        <img src="https://randomuser.me/api/portraits/women/28.jpg" alt="Ayşe Kaya" class="reviewer-image">
+                                        <div class="reviewer-info">
+                                            <div class="reviewer-name">Ayşe Kaya</div>
+                                            <div class="review-date">15 Temmuz 2023</div>
+                                        </div>
+                                    </div>
+                                    <div class="review-rating">
+                                        <span class="star filled">★</span>
+                                        <span class="star filled">★</span>
+                                        <span class="star filled">★</span>
+                                        <span class="star filled">★</span>
+                                        <span class="star filled">★</span>
+                                    </div>
+                                </div>
+                                <div class="review-content">
+                                    Ahmet ile E-ticaret projemiz için çalıştık. Mükemmel bir iş çıkardı. Zamanında teslim etti ve tüm isteklerimizi karşıladı. Teknik bilgisi ve iletişim becerileri çok yüksek. Kesinlikle tekrar çalışmak isterim.
+                                </div>
+                                <div class="review-tags">
+                                    <div class="review-tag">Web Geliştirme</div>
+                                    <div class="review-tag">React.js</div>
+                                    <div class="review-tag">E-ticaret</div>
+                                </div>
+                            </div>
+                            <div class="review-item">
+                                <div class="review-item-header">
+                                    <div class="reviewer">
+                                        <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Mehmet Demir" class="reviewer-image">
+                                        <div class="reviewer-info">
+                                            <div class="reviewer-name">Mehmet Demir</div>
+                                            <div class="review-date">3 Haziran 2023</div>
+                                        </div>
+                                    </div>
+                                    <div class="review-rating">
+                                        <span class="star filled">★</span>
+                                        <span class="star filled">★</span>
+                                        <span class="star filled">★</span>
+                                        <span class="star filled">★</span>
+                                        <span class="star">★</span>
+                                    </div>
+                                </div>
+                                <div class="review-content">
+                                    Mobil uygulamamızın yeniden tasarımı için Ahmet ile çalıştık. Çok güzel bir tasarım yaptı ve teknik anlamda hiçbir sorun yaşamadık. Sadece bazı özelliklerin tamamlanması biraz daha uzun sürdü, bu yüzden 4 yıldız veriyorum. Ama genel olarak kesinlikle tavsiye ederim.
+                                </div>
+                                <div class="review-tags">
+                                    <div class="review-tag">Mobil Uygulama</div>
+                                    <div class="review-tag">UI/UX Tasarım</div>
+                                    <div class="review-tag">React Native</div>
+                                </div>
+                            </div>
+                            <div class="review-item">
+                                <div class="review-item-header">
+                                    <div class="reviewer">
+                                        <img src="https://randomuser.me/api/portraits/women/67.jpg" alt="Zeynep Yıldız" class="reviewer-image">
+                                        <div class="reviewer-info">
+                                            <div class="reviewer-name">Zeynep Yıldız</div>
+                                            <div class="review-date">12 Mayıs 2023</div>
+                                        </div>
+                                    </div>
+                                    <div class="review-rating">
+                                        <span class="star filled">★</span>
+                                        <span class="star filled">★</span>
+                                        <span class="star filled">★</span>
+                                        <span class="star filled">★</span>
+                                        <span class="star filled">★</span>
+                                    </div>
+                                </div>
+                                <div class="review-content">
+                                    Startup'ımız için bir admin paneli geliştirmesi için Ahmet'i seçtik. Karar vermeden önce birçok freelancer ile görüştük ama Ahmet'in teknik bilgisi ve isteklerimizi anlama yeteneği bizi etkiledi. Proje boyunca düzenli iletişim kurdu ve her aşamada bizi bilgilendirdi. Sonuç olarak, beklenenden daha iyi bir admin paneli elde ettik. Teşekkürler Ahmet!
+                                </div>
+                                <div class="review-tags">
+                                    <div class="review-tag">Admin Panel</div>
+                                    <div class="review-tag">Dashboard</div>
+                                    <div class="review-tag">Node.js</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="profile-card">
+                        <h3 class="card-title">Hakkımda</h3>
+                        <div class="about-content">
+                            <p>Merhaba, ben Ahmet. 8 yıllık tecrübesi olan bir yazılım geliştirme uzmanıyım. Kariyerim boyunca e-ticaret platformları, mobil uygulamalar ve web tabanlı kurumsal çözümler üzerinde çalıştım.</p>
+                            <p>Frontend geliştirmede uzmanlaşmış olmakla birlikte, full-stack geliştirme konusunda da deneyimim var. JavaScript ekosistemindeki (React, Node.js, Express) teknolojilere hakimim ve sürekli olarak yeni teknolojiler öğrenmeye çalışıyorum.</p>
+                            <p>Son dönemde özellikle yapay zeka entegrasyonları ve büyük veri işleme konularında projeler üzerinde çalışıyorum. Müşterilerime sadece teknik çözümler sunmakla kalmayıp, iş hedeflerine ulaşmalarına yardımcı olmak için stratejik tavsiyelerde de bulunuyorum.</p>
+                            <p>Siz de benimle çalışmak isterseniz, lütfen iletişime geçmekten çekinmeyin. Projelerinizi hayata geçirmek için elimden gelenin en iyisini yapmaya hazırım.</p>
+                        </div>
+                    </div>
+
+                    <div class="profile-card">
+                        <h3 class="card-title">Hizmetler</h3>
+                        <div class="services-grid">
+                            <div class="service-item">
+                                <div class="service-icon">
+                                    <i class="fas fa-laptop-code"></i>
+                                </div>
+                                <div class="service-content">
+                                    <h4 class="service-title">Web Uygulama Geliştirme</h4>
+                                    <p class="service-description">Modern frontend framework'leri (React, Vue, Angular) ve backend teknolojileri kullanarak responsive web uygulamaları geliştirme.</p>
+                                </div>
+                            </div>
+                            <div class="service-item">
+                                <div class="service-icon">
+                                    <i class="fas fa-mobile-alt"></i>
+                                </div>
+                                <div class="service-content">
+                                    <h4 class="service-title">Mobil Uygulama Geliştirme</h4>
+                                    <p class="service-description">React Native ile iOS ve Android platformları için cross-platform mobil uygulamalar geliştirme.</p>
+                                </div>
+                            </div>
+                            <div class="service-item">
+                                <div class="service-icon">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </div>
+                                <div class="service-content">
+                                    <h4 class="service-title">E-ticaret Çözümleri</h4>
+                                    <p class="service-description">WooCommerce, Shopify veya özel çözümler ile e-ticaret platformları kurulumu ve geliştirmesi.</p>
+                                </div>
+                            </div>
+                            <div class="service-item">
+                                <div class="service-icon">
+                                    <i class="fas fa-server"></i>
+                                </div>
+                                <div class="service-content">
+                                    <h4 class="service-title">API Geliştirme</h4>
+                                    <p class="service-description">RESTful API veya GraphQL API tasarımı ve geliştirmesi. Üçüncü parti API entegrasyonları.</p>
+                                </div>
+                            </div>
+                            <div class="service-item">
+                                <div class="service-icon">
+                                    <i class="fas fa-palette"></i>
+                                </div>
+                                <div class="service-content">
+                                    <h4 class="service-title">UI/UX Tasarım</h4>
+                                    <p class="service-description">Kullanıcı deneyimi odaklı arayüz tasarımı ve prototipler geliştirme.</p>
+                                </div>
+                            </div>
+                            <div class="service-item">
+                                <div class="service-icon">
+                                    <i class="fas fa-code-branch"></i>
+                                </div>
+                                <div class="service-content">
+                                    <h4 class="service-title">Danışmanlık & Mentorluk</h4>
+                                    <p class="service-description">Teknik projeler için danışmanlık ve junior geliştiriciler için mentorluk hizmetleri.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2023 TrustID. Tüm hakları saklıdır.</p>
+                <ul class="footer-links-inline">
+                    <li><a href="terms.html">Kullanım Şartları</a></li>
+                    <li><a href="privacy.html">Gizlilik Politikası</a></li>
+                    <li><a href="help.html">Yardım</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menü toggle fonksiyonalitesi
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('.nav').classList.toggle('active');
+        });
+
+        // Tab fonksiyonalitesi
+        const tabItems = document.querySelectorAll('.tab-item');
+        tabItems.forEach(tab => {
+            tab.addEventListener('click', function() {
+                tabItems.forEach(item => item.classList.remove('active'));
+                this.classList.add('active');
+                // Burada tab içeriğini değiştirme fonksiyonu eklenebilir
+            });
+        });
+
+        // Filter fonksiyonalitesi
+        const filterOptions = document.querySelectorAll('.filter-option');
+        filterOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                filterOptions.forEach(item => item.classList.remove('active'));
+                this.classList.add('active');
+                // Burada filtreleme fonksiyonu eklenebilir
+            });
+        });
+    </script>
+</body>
+</html>

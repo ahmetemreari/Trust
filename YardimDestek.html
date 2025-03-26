@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yardım ve Destek - TrustID</title>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Genel Stiller */
+        :root {
+            --primary-color: #2563eb;
+            --primary-dark: #1d4ed8;
+            --primary-light: #60a5fa;
+            --secondary-color: #4f46e5;
+            --accent-color: #0284c7;
+            --text-color: #1e293b;
+            --text-light: #64748b;
+            --background-color: #ffffff;
+            --background-light: #f8fafc;
+            --background-dark: #f1f5f9;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --border-color: #e2e8f0;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.5;
+            color: var(--text-color);
+            background-color: var(--background-light);
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--primary-dark);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background-color: var(--background-color);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 15px 0;
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo a {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--text-color);
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        .nav ul {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .nav a {
+            color: var(--text-color);
+            font-weight: 500;
+        }
+
+        .nav a:hover, .nav a.active {
+            color: var(--primary-color);
+        }
+
+        .user-menu {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .user-name {
+            font-weight: 600;
+        }
+
+        .user-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            margin-top: 10px;
+            background-color: var(--background-color);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            min-width: 200px;
+            display: none;
+            z-index: 10;
+        }
+
+        .user-menu:hover .user-dropdown {
+            display: block;
+        }
+
+        .user-dropdown-item {
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-color);
+            transition: var(--transition);
+        }
+
+        .user-dropdown-item:hover {
+            background-color: var(--background-light);
+            color: var(--primary-color);
+        }
+
+        .user-dropdown-divider {
+            height: 1px;
+            background-color: var(--border-color);
+            margin: 8px 0;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            outline: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            color: white;
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background-color: #3730a3;
+            color: white;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-block {
+            width: 100%;
+        }
+
+        /* Yardım ve Destek Sayfası */
+        .help-page {
+            padding: 40px 0;
+        }
+
+        .page-header {
+            margin-bottom: 30px;
+        }
+
+        .page-title {
+            font-size: 2rem;
+            margin-bottom: 5px;
+            color: var(--text-color);
+        }
+
+        .page-description {
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        .help-layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 30px;
+        }
+
+        .help-sidebar {
+            background-color: var(--background-color);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 25px;
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+
+        .sidebar-title {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .help-categories {
+            margin-bottom: 20px;
+        }
+
+        .category-item {
+            padding: 12px 15px;
+            border-radius: var(--border-radius);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .category-item:hover {
+            background-color: var(--background-light);
+            color: var(--primary-color);
+        }
+
+        .category-item.active {
+            background-color: var(--primary-light);
+            color: var(--primary-dark);
+        }
+
+        .category-item i {
+            width: 20px;
+            text-align: center;
+        }
+
+        .contact-support {
+            padding: 20px;
+            background-color: var(--background-light);
+            border-radius: var(--border-radius);
+            border: 1px solid var(--border-color);
+        }
+
+        .contact-support-title {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: var(--text-color);
+        }
+
+        .contact-support-text {
+            color: var(--text-light);
+            margin-bottom: 15px;
+        }
+
+        .help-content {
+            background-color: var(--background-color);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 30px;
+        }
+
+        .help-search {
+            margin-bottom: 30px;
+        }
+
+        .search-container {
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 15px 15px 15px 45px;
+            border-radius: var(--border-radius);
+            border: 1px solid var(--border-color);
+            background-color: var(--background-light);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .search-input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+            outline: none;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        .faq-container {
+            margin-bottom: 40px;
+        }
+
+        .faq-section {
+            margin-bottom: 30px;
+        }
+
+        .faq-section-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--text-color);
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 18px 20px;
+            background-color: var(--background-light);
+            color: var(--text-color);
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .faq-question:hover {
+            background-color: rgba(37, 99, 235, 0.05);
+        }
+
+        .faq-question-text {
+            flex: 1;
+        }
+
+        .faq-toggle {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-answer-content {
+            padding: 0 0 20px;
+            color: var(--text-light);
+        }
+
+        .faq-item.active .faq-question {
+            background-color: rgba(37, 99, 235, 0.1);
+            color: var(--primary-color);
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(180deg);
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 1000px;
+        }
+
+        .help-guides {
+            margin-bottom: 40px;
+        }
+
+        .guides-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--text-color);
+        }
+
+        .guides-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .guide-card {
+            background-color: var(--background-light);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+        }
+
+        .guide-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--box-shadow);
+        }
+
+        .guide-image {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+        }
+
+        .guide-content {
+            padding: 20px;
+        }
+
+        .guide-title {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: var(--text-color);
+            font-weight: 600;
+        }
+
+        .guide-description {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        .guide-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary-color);
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .guide-link:hover {
+            text-decoration: underline;
+        }
+
+        .contact-form-container {
+            margin-top: 40px;
+        }
+
+        .contact-form-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--text-color);
+        }
+
+        .contact-form {
+            background-color: var(--background-light);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            border: 1px solid var(--border-color);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .form-col {
+            flex: 1;
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: var(--border-radius);
+            border: 1px solid var(--border-color);
+            background-color: var(--background-color);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+            outline: none;
+        }
+
+        .form-textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .form-help {
+            margin-top: 8px;
+            font-size: 0.875rem;
+            color: var(--text-light);
+        }
+
+        .popular-topics {
+            margin-top: 40px;
+        }
+
+        .popular-topics-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--text-color);
+        }
+
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .topic-card {
+            background-color: var(--background-light);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .topic-card:hover {
+            background-color: var(--background-color);
+            transform: translateY(-5px);
+            box-shadow: var(--box-shadow);
+        }
+
+        .topic-icon {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(37, 99, 235, 0.1);
+            color: var(--primary-color);
+            border-radius: 50%;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .topic-title {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .topic-description {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        /* Duyarlı Tasarım */
+        @media (max-width: 992px) {
+            .help-layout {
+                grid-template-columns: 1fr;
+            }
+            
+            .help-sidebar {
+                position: static;
+                margin-bottom: 30px;
+            }
+            
+            .guides-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+                margin-bottom: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                display: none;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .guides-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .topics-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .topics-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #1e293b;
+            color: white;
+            padding: 30px 0;
+            margin-top: 60px;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 20px;
+        }
+
+        .footer-links-inline {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-links-inline a {
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        .footer-links-inline a:hover {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">Trust<span>ID</span></a>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html">Ana Sayfa</a></li>
+                    <li><a href="search.html">Kişi Ara</a></li>
+                    <li><a href="dashboard.html">Kontrol Paneli</a></li>
+                    <li><a href="verification.html">Doğrulama Merkezi</a></li>
+                </ul>
+            </nav>
+            <div class="user-menu">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Ahmet Yılmaz" class="user-avatar">
+                <span class="user-name">Ahmet Yılmaz</span>
+                <i class="fas fa-chevron-down"></i>
+                <div class="user-dropdown">
+                    <a href="profile.html" class="user-dropdown-item">
+                        <i class="fas fa-user"></i>
+                        Profilim
+                    </a>
+                    <a href="settings.html" class="user-dropdown-item">
+                        <i class="fas fa-cog"></i>
+                        Ayarlar
+                    </a>
+                    <div class="user-dropdown-divider"></div>
+                    <a href="help.html" class="user-dropdown-item">
+                        <i class="fas fa-question-circle"></i>
+                        Yardım
+                    </a>
+                    <a href="#" class="user-dropdown-item">
+                        <i class="fas fa-sign-out-alt"></i>
+                        Çıkış Yap
+                    </a>
+                </div>
+            </div>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <main class="help-page">
+        <div class="container">
+            <div class="page-header">
+                <h1 class="page-title">Yardım ve Destek</h1>
+                <p class="page-description">Sık sorulan sorular, rehberler ve destek ekibimize ulaşma yolları.</p>
+            </div>
+
+            <div class="help-layout">
+                <div class="help-sidebar">
+                    <h3 class="sidebar-title">Yardım Kategorileri</h3>
+                    <div class="help-categories">
+                        <div class="category-item active" data-target="getting-started">
+                            <i class="fas fa-rocket"></i>
+                            <span>Başlangıç</span>
+                        </div>
+                        <div class="category-item" data-target="account">
+                            <i class="fas fa-user-circle"></i>
+                            <span>Hesap Yönetimi</span>
+                        </div>
+                        <div class="category-item" data-target="verification">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Doğrulama İşlemleri</span>
+                        </div>
+                        <div class="category-item" data-target="privacy">
+                            <i class="fas fa-lock"></i>
+                            <span>Gizlilik ve Güvenlik</span>
+                        </div>
+                        <div class="category-item" data-target="payment">
+                            <i class="fas fa-credit-card"></i>
+                            <span>Ödeme ve Faturalama</span>
+                        </div>
+                        <div class="category-item" data-target="technical">
+                            <i class="fas fa-tools"></i>
+                            <span>Teknik Sorunlar</span>
+                        </div>
+                    </div>
+
+                    <div class="contact-support">
+                        <h4 class="contact-support-title">Destek Ekibine Ulaşın</h4>
+                        <p class="contact-support-text">Aradığınız cevabı bulamadınız mı? Destek ekibimiz size yardımcı olmaktan memnuniyet duyacaktır.</p>
+                        <a href="#contact-form" class="btn btn-primary btn-block">Destek Talebi Oluştur</a>
+                    </div>
+                </div>
+
+                <div class="help-content">
+                    <div class="help-search">
+                        <div class="search-container">
+                            <i class="fas fa-search search-icon"></i>
+                            <input type="text" class="search-input" placeholder="Nasıl yardımcı olabiliriz?">
+                        </div>
+                    </div>
+
+                    <div class="faq-container" id="getting-started">
+                        <div class="faq-section">
+                            <h2 class="faq-section-title">Başlangıç Rehberi</h2>
+                            
+                            <div class="faq-item active">
+                                <div class="faq-question">
+                                    <div class="faq-question-text">TrustID nedir ve nasıl çalışır?</div>
+                                    <i class="fas fa-chevron-down faq-toggle"></i>
+                                </div>
+                                <div class="faq-answer" style="max-height: 1000px;">
+                                    <div class="faq-answer-content">
+                                        <p>TrustID, gerçek hayatta ve internet üzerinde güvenilirliğinizi gösteren, sosyal kredi puanı gibi kullanabileceğiniz bir kimlik doğrulama ve güven platformudur.</p>
+                                        <p>Platform, kimlik doğrulama, adres doğrulama, sosyal medya hesapları, eğitim ve iş geçmişi gibi bilgilerinizi doğrulamanıza olanak tanır. Bu doğrulamalar, sizin hakkınızda güvenilir bir profil oluşturur ve TrustID puanınızı artırır.</p>
+                                        <p>Bu puan, iş dünyasında, e-ticarette ve sosyal ilişkilerde güvenilirliğinizi kanıtlamak için kullanabilirsiniz. Örneğin, bir işveren, iş başvurusunda TrustID profilinizi görüntüleyerek hakkınızda daha güvenilir bilgilere sahip olabilir.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="faq-item">
+                                <div class="faq-question">
+                                    <div class="faq-question-text">TrustID'ye nasıl kayıt olabilirim?</div>
+                                    <i class="fas fa-chevron-down faq-toggle"></i>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        <p>TrustID'ye kayıt olmak çok kolay! Ana sayfadaki "Kayıt Ol" butonuna tıklayarak veya doğrudan kayıt sayfasını ziyaret ederek üyelik işleminizi başlatabilirsiniz.</p>
+                                        <p>Kayıt için aşağıdaki adımları izlemeniz gerekiyor:</p>
+                                        <ol>
+                                            <li>E-posta adresinizi ve şifrenizi girin</li>
+                                            <li>Ad, soyad gibi temel bilgilerinizi girin</li>
+                                            <li>E-posta doğrulamasını tamamlayın</li>
+                                            <li>Profil bilgilerinizi doldurun</li>
+                                            <li>İlk doğrulama adımını tamamlayın</li>
+                                        </ol>
+                                        <p>Tüm bu adımları tamamladıktan sonra, TrustID hesabınız oluşturulacak ve platformun tüm özelliklerini kullanmaya başlayabileceksiniz.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="faq-item">
+                                <div class="faq-question">
+                                    <div class="faq-question-text">TrustID puanı nasıl hesaplanır?</div>
+                                    <i class="fas fa-chevron-down faq-toggle"></i>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        <p>TrustID puanı, güvenilirliğinizi ölçen 0-100 arasında bir değerdir. Bu puan, çeşitli faktörlerin algoritmik değerlendirmesiyle hesaplanır:</p>
+                                        <ul>
+                                            <li><strong>Kimlik Doğrulama:</strong> Resmi kimlik belgenizle yapılan doğrulama</li>
+                                            <li><strong>İletişim Doğrulama:</strong> E-posta ve telefon doğrulaması</li>
+                                            <li><strong>Adres Doğrulama:</strong> Fiziksel adresinizin doğrulanması</li>
+                                            <li><strong>Eğitim ve İş Geçmişi:</strong> Eğitim ve iş deneyimlerinizin doğrulanması</li>
+                                            <li><strong>Sosyal Medya Entegrasyonu:</strong> Sosyal medya hesaplarınızın bağlanması</li>
+                                            <li><strong>Kullanıcı Değerlendirmeleri:</strong> Diğer kullanıcılardan aldığınız puanlar</li>
+                                            <li><strong>Platform Aktivitesi:</strong> TrustID üzerindeki aktifliğiniz ve davranışlarınız</li>
+                                        </ul>
+                                        <p>Her bir doğrulama adımı, TrustID puanınıza olumlu katkı sağlar. Daha fazla doğrulama yaptıkça, puanınız yükselir ve güvenilirliğiniz artar.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="faq-item">
+                                <div class="faq-question">
+                                    <div class="faq-question-text">TrustID puanımı nasıl yükseltebilirim?</div>
+                                    <i class="fas fa-chevron-down faq-toggle"></i>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        <p>TrustID puanınızı yükseltmek için aşağıdaki adımları izleyebilirsiniz:</p>
+                                        <ul>
+                                            <li><strong>Tüm Doğrulamaları Tamamlayın:</strong> Kimlik, e-posta, telefon, adres, eğitim ve iş geçmişi doğrulamalarınızı tamamlayın.</li>
+                                            <li><strong>Sosyal Medya Hesaplarınızı Bağlayın:</strong> LinkedIn, Facebook, Twitter gibi sosyal medya hesaplarınızı TrustID profilinize bağlayın.</li>
+                                            <li><strong>Aktif Olun:</strong> Platformu düzenli olarak kullanın ve diğer kullanıcılarla etkileşime geçin.</li>
+                                            <li><strong>Olumlu Değerlendirmeler Alın:</strong> İş yaptığınız kişilerden olumlu değerlendirmeler almaya çalışın.</li>
+                                            <li><strong>Profilinizi Güncel Tutun:</strong> Profil bilgilerinizi düzenli olarak güncelleyin ve eksiksiz bir profil oluşturun.</li>
+                                            <li><strong>Premium Üyelik Alın:</strong> Premium üyelik, daha detaylı doğrulamalar ve ek özellikler sunarak puanınızı yükseltmenize yardımcı olabilir.</li>
+                                        </ul>
+                                        <p>Her bir doğrulama adımı ve aktivite, puanınıza belirli oranda katkı sağlar. Doğrulamalarınızı ne kadar çok tamamlarsanız, TrustID puanınız o kadar yüksek olur.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="faq-item">
+                                <div class="faq-question">
+                                    <div class="faq-question-text">TrustID ücretsiz midir?</div>
+                                    <i class="fas fa-chevron-down faq-toggle"></i>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        <p>TrustID hem ücretsiz hem de premium üyelik seçenekleri sunar:</p>
+                                        <p><strong>Ücretsiz Üyelik:</strong></p>
+                                        <ul>
+                                            <li>Temel profil oluşturma</li>
+                                            <li>E-posta ve telefon doğrulama</li>
+                                            <li>Aylık 5 profil görüntüleme</li>
+                                            <li>Temel güven puanı hesaplama</li>
+                                        </ul>
+                                        <p><strong>Premium Üyelik (₺49/ay):</strong></p>
+                                        <ul>
+                                            <li>Gelişmiş profil oluşturma</li>
+                                            <li>Tüm doğrulama özellikleri</li>
+                                            <li>Sınırsız profil görüntüleme</li>
+                                            <li>İş ve eğitim doğrulama</li>
+                                            <li>Detaylı güven raporu</li>
+                                            <li>Öncelikli destek</li>
+                                        </ul>
+                                        <p><strong>İşletme Üyeliği (₺199/ay):</strong></p>
+                                        <ul>
+                                            <li>Premium tüm özellikleri</li>
+                                            <li>API erişimi</li>
+                                            <li>5 kullanıcı hesabı</li>
+                                            <li>Özel marka entegrasyonu</li>
+                                            <li>İş başvurusu yönetimi</li>
+                                            <li>7/24 öncelikli destek</li>
+                                        </ul>
+                                        <p>Ücretsiz üyelik, temel özellikleri kullanmanızı sağlar, ancak daha kapsamlı doğrulamalar ve avantajlar için Premium veya İşletme üyeliği almanız önerilir.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-container" id="account" style="display: none;">
+                        <div class="faq-section">
+                            <h2 class="faq-section-title">Hesap Yönetimi</h2>
+                            
+                            <div class="faq-item">
+                                <div class="faq-question">
+                                    <div class="faq-question-text">Şifremi nasıl değiştirebilirim?</div>
+                                    <i class="fas fa-chevron-down faq-toggle"></i>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        <p>Şifrenizi değiştirmek için aşağıdaki adımları izleyebilirsiniz:</p>
+                                        <ol>
+                                            <li>Sağ üst köşedeki profil menüsüne tıklayın</li>
+                                            <li>"Ayarlar" seçeneğini seçin</li>
+                                            <li>"Hesap" sekmesine geçin</li>
+                                            <li>"Şifre Değiştir" bölümünde mevcut şifrenizi girin</li>
+                                            <li>Yeni şifrenizi belirleyin ve onaylayın</li>
+                                            <li>"Değişiklikleri Kaydet" butonuna tıklayın</li>
+                                        </ol>
+                                        <p>Şifrenizi unuttuysanız, giriş sayfasındaki "Şifremi Unuttum" bağlantısını kullanarak sıfırlama işlemi başlatabilirsiniz.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="faq-item">
+                                <div class="faq-question">
+                                    <div class="faq-question-text">Hesabımı nasıl silebilirim?</div>
+                                    <i class="fas fa-chevron-down faq-toggle"></i>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        <p>Hesabınızı silmek için aşağıdaki adımları izleyebilirsiniz:</p>
+                                        <ol>
+                                            <li>Sağ üst köşedeki profil menüsüne tıklayın</li>
+                                            <li>"Ayarlar" seçeneğini seçin</li>
+                                            <li>"Hesap" sekmesine geçin</li>
+                                            <li>Sayfanın en altındaki "Tehlikeli Bölge" kısmına inin</li>
+                                            <li>"Hesabımı Sil" butonuna tıklayın</li>
+                                            <li>Silme işlemini onaylamak için şifrenizi girin</li>
+                                        </ol>
+                                        <p><strong>Önemli Uyarı:</strong> Hesabınızı sildiğinizde, tüm verileriniz, doğrulamalarınız ve güven puanınız kalıcı olarak silinir. Bu işlem geri alınamaz.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="faq-item">
+                                <div class="faq-question">
+                                    <div class="faq-question-text">Profil fotoğrafımı nasıl değiştirebilirim?</div>
+                                    <i class="fas fa-chevron-down faq-toggle"></i>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        <p>Profil fotoğrafınızı değiştirmek için aşağıdaki adımları izleyebilirsiniz:</p>
+                                        <ol>
+                                            <li>Sağ üst köşedeki profil menüsüne tıklayın</li>
+                                            <li>"Ayarlar" seçeneğini seçin</li>
+                                            <li>"Profil" sekmesinde, mevcut profil fotoğrafınızın üzerine tıklayın</li>
+                                            <li>"Yeni Profil Resmi Yükle" butonuna tıklayarak bilgisayarınızdan bir fotoğraf seçin</li>
+                                            <li>Fotoğrafı kırpma ve düzenleme işlemlerini yapın</li>
+                                            <li>"Kaydet" butonuna tıklayın</li>
+                                        </ol>
+                                        <p>Profil fotoğrafınız için önerilen boyut en az 400x400 pikseldir. JPEG, PNG veya GIF formatlarını kullanabilirsiniz.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="faq-item">
+                                <div class="faq-question">
+                                    <div class="faq-question-text">Premium üyeliğe nasıl geçebilirim?</div>
+                                    <i class="fas fa-chevron-down faq-toggle"></i>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        <p>Premium üyeliğe geçmek için aşağıdaki adımları izleyebilirsiniz:</p>
+                                        <ol>
+                                            <li>Sağ üst köşedeki profil menüsüne tıklayın</li>
+                                            <li>"Ayarlar" seçeneğini seçin</li>
+                                            <li>"Üyelik" sekmesine geçin</li>
+                                            <li>"Premium'a Yükselt" butonuna tıklayın</li>
+                                            <li>Ödeme bilgilerinizi girin</li>
+                                            <li>Üyelik süresi ve planı seçin (aylık veya yıllık)</li>
+                                            <li>"Satın Al" butonuna tıklayarak işlemi tamamlayın</li>
+                                        </ol>
+                                        <p>Premium üyelik, daha fazla doğrulama seçeneği, sınırsız profil görüntüleme ve öncelikli destek gibi avantajlar sunar. Yıllık ödeme seçeneği ile %20 indirim kazanabilirsiniz.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-container" id="verification" style="display: none;">
+                        <div class="faq-section">
+                            <h2 class="faq-section-title">Doğrulama İşlemleri</h2>
+                            
+                            <div class="faq-item">
+                                <div class="faq-question">
+                                    <div class="faq-question-text">Kimlik doğrulama işlemi nasıl yapılır?</div>
+                                    <i class="fas fa-chevron-down faq-toggle"></i>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        <p>Kimlik doğrulama işlemi için aşağıdaki adımları izleyebilirsiniz:</p>
+                                        <ol>
+                                            <li>Kontrol Panelinden "Doğrulama Merkezi"ne gidin</li>
+                                            <li>"Kimlik Doğrulama" kartındaki "Doğrula" butonuna tıklayın</li>
+                                            <li>Kimlik belgenizin (nüfus cüzdanı, pasaport veya ehliyet) ön ve arka yüzünün fotoğrafını yükleyin</li>
+                                            <li>Yüzünüzün net göründüğü bir selfie çekin</li>
+                                            <li>Kişisel bilgilerinizi doğrulayın</li>
+                                            <li>"Doğrulama İsteği Gönder" butonuna tıklayın</li>
+                                        </ol>
+                                        <p>Doğrulama işlemi genellikle 24-48 saat içinde tamamlanır. Bilgileriniz incelendikten sonra e-posta ile bilgilendirilirsiniz.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="faq-item">
+                                <div class="faq-question">
+                                    <div class="faq-question-text">Adres doğrulama için hangi belgeler geçerlidir?</div>
+                                    <i class="fas fa-chevron-down faq-toggle"></i>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        <p>Adres doğrulama için aşağıdaki belgelerden birini kullanabilirsiniz:</p>
+                                        <ul>
+                                            <li>Son 3 aya ait elektrik, su, doğalgaz faturası</li>
+                                            <li>Son 3 aya ait telefon veya internet faturası</li>
+                                            <li>Son 3 aya ait banka hesap ekstresi</li>
+                                            <li>İkametgah belgesi (e-Devlet'ten alınabilir)</li>
+                                            <li>Kira sözleşmesi</li>
+                                            <li>Tapu belgesi</li>
+                                        </ul>
+                                        <p>Belgenin üzerinde tam adınız ve adresiniz açıkça görünmelidir. Belgenin tarihinin son 3 ay içinde olması gerekmektedir.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="faq-item">
+                                <div class="faq-question">
+                                    <div class="faq-question-text">Eğitim ve iş geçmişi doğrulaması nasıl yapılır?</div>
+                                    <i class="fas fa-chevron-down faq-toggle"></i>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        <p><strong>Eğitim Doğrulama:</strong></p>
+                                        <ol>
+                                            <li>Doğrulama Merkezi'nden "Eğitim Doğrulama" kartına tıklayın</li>
+                                            <li>Eğitim kurumunuz, bölümünüz ve mezuniyet yılınızı girin</li>
+                                            <li>Diplomanızın veya mezuniyet belgenizin bir kopyasını yükleyin</li>
+                                            <li>"Doğrulama İsteği Gönder" butonuna tıklayın</li>
+                                        </ol>
+                                        <p><strong>İş Geçmişi Doğrulama:</strong></p>
+                                        <ol>
+                                            <li>Doğrulama Merkezi'nden "İş Geçmişi Doğrulama" kartına tıklayın</li>
+                                            <li>Şirketinizin adını, pozisyonunuzu ve çalışma tarihlerinizi girin</li>
+                                            <li>Referans olarak göstereceğiniz kişinin e-posta adresini girin</li>
+                                            <li>İsteğe bağlı olarak iş sözleşmesi veya maaş bordrosu yükleyin</li>
+                                            <li>"Doğrulama İsteği Gönder" butonuna tıklayın</li>
+                                        </ol>
+                                        <p>Eğitim ve iş geçmişi doğrulamaları, belgelerin incelenmesi ve referansların kontrol edilmesi ile yapılır. Bu süreç 3-5 iş günü sürebilir.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="faq-item">
+                                <div class="faq-question">
+                                    <div class="faq-question-text">Doğrulama talebim reddedildi, ne yapmalıyım?</div>
+                                    <i class="fas fa-chevron-down faq-toggle"></i>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        <p>Doğrulama talebiniz aşağıdaki nedenlerle reddedilmiş olabilir:</p>
+                                        <ul>
+                                            <li>Belge kalitesinin düşük olması (bulanık, kırpılmış, okunaksız)</li>
+                                            <li>Belgenin geçersiz olması (süresi dolmuş, eski tarihli)</li>
+                                            <li>Belgedeki bilgilerin girilen bilgilerle eşleşmemesi</li>
+                                            <li>Kimlik doğrulamada selfie ile kimlik fotoğrafının eşleşmemesi</li>
+                                        </ul>
+                                        <p>Reddedilme nedeni e-posta ile size bildirilecektir. Sorunları giderdikten sonra, Doğrulama Merkezi'nden yeniden başvuru yapabilirsiniz.</p>
+                                        <p>Yardıma ihtiyacınız varsa, destek ekibimize başvurabilir veya yardım sayfamızdaki rehberlere göz atabilirsiniz.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="guides">
+                        <h3 class="guides-title">Popüler Rehberler</h3>
+                        <div class="guides-grid">
+                            <div class="guide-card">
+                                <img src="https://via.placeholder.com/400x200" alt="TrustID Başlangıç Rehberi" class="guide-image">
+                                <div class="guide-content">
+                                    <h4 class="guide-title">TrustID Başlangıç Rehberi</h4>
+                                    <p class="guide-description">Yeni başlayanlar için adım adım TrustID kullanım rehberi.</p>
+                                    <a href="#" class="guide-link">
+                                        Rehberi Görüntüle
+                                        <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="guide-card">
+                                <img src="https://via.placeholder.com/400x200" alt="TrustID Puanını Yükseltme" class="guide-image">
+                                <div class="guide-content">
+                                    <h4 class="guide-title">TrustID Puanınızı Nasıl Yükseltirsiniz?</h4>
+                                    <p class="guide-description">Güven puanınızı artırmanın etkili yolları.</p>
+                                    <a href="#" class="guide-link">
+                                        Rehberi Görüntüle
+                                        <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="guide-card">
+                                <img src="https://via.placeholder.com/400x200" alt="Doğrulama İpuçları" class="guide-image">
+                                <div class="guide-content">
+                                    <h4 class="guide-title">Doğrulama İşlemleri İçin İpuçları</h4>
+                                    <p class="guide-description">Doğrulama işlemlerini hızlı ve sorunsuz tamamlamanın yolları.</p>
+                                    <a href="#" class="guide-link">
+                                        Rehberi Görüntüle
+                                        <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="popular-topics">
+                        <h3 class="popular-topics-title">Popüler Konular</h3>
+                        <div class="topics-grid">
+                            <div class="topic-card">
+                                <div class="topic-icon">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <h4 class="topic-title">Güvenlik İpuçları</h4>
+                                <p class="topic-description">Hesabınızı ve kişisel bilgilerinizi güvende tutmanın yolları.</p>
+                                <a href="#" class="guide-link">Daha Fazla</a>
+                            </div>
+                            <div class="topic-card">
+                                <div class="topic-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <h4 class="topic-title">Bağlantı Yönetimi</h4>
+                                <p class="topic-description">Bağlantılarınızı etkili bir şekilde yönetme ve genişletme.</p>
+                                <a href="#" class="guide-link">Daha Fazla</a>
+                            </div>
+                            <div class="topic-card">
+                                <div class="topic-icon">
+                                    <i class="fas fa-mobile-alt"></i>
+                                </div>
+                                <h4 class="topic-title">Mobil Kullanım</h4>
+                                <p class="topic-description">TrustID'yi mobil cihazlarda etkili bir şekilde kullanma.</p>
+                                <a href="#" class="guide-link">Daha Fazla</a>
+                            </div>
+                            <div class="topic-card">
+                                <div class="topic-icon">
+                                    <i class="fas fa-briefcase"></i>
+                                </div>
+                                <h4 class="topic-title">İş Fırsatları</h4>
+                                <p class="topic-description">TrustID ile iş fırsatlarını maksimize etme.</p>
+                                <a href="#" class="guide-link">Daha Fazla</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-form-container" id="contact-form">
+                        <h3 class="contact-form-title">Destek Ekibine Ulaşın</h3>
+                        <form class="contact-form">
+                            <div class="form-row">
+                                <div class="form-col">
+                                    <div class="form-group">
+                                        <label for="name" class="form-label">Adınız</label>
+                                        <input type="text" id="name" class="form-input" placeholder="Adınız ve soyadınız">
+                                    </div>
+                                </div>
+                                <div class="form-col">
+                                    <div class="form-group">
+                                        <label for="email" class="form-label">E-posta Adresiniz</label>
+                                        <input type="email" id="email" class="form-input" placeholder="E-posta adresiniz">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject" class="form-label">Konu</label>
+                                <select id="subject" class="form-select">
+                                    <option value="">Konu Seçin</option>
+                                    <option value="account">Hesap Sorunları</option>
+                                    <option value="verification">Doğrulama İşlemleri</option>
+                                    <option value="payment">Ödeme ve Faturalama</option>
+                                    <option value="technical">Teknik Sorunlar</option>
+                                    <option value="other">Diğer</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="message" class="form-label">Mesajınız</label>
+                                <textarea id="message" class="form-textarea" placeholder="Sorunuzu veya sorununuzu detaylı bir şekilde açıklayın"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">Mesajı Gönder</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2023 TrustID. Tüm hakları saklıdır.</p>
+                <ul class="footer-links-inline">
+                    <li><a href="terms.html">Kullanım Şartları</a></li>
+                    <li><a href="privacy.html">Gizlilik Politikası</a></li>
+                    <li><a href="help.html">Yardım</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menü toggle fonksiyonalitesi
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('.nav').classList.toggle('active');
+        });
+
+        // FAQ açılır kapanır fonksiyonalitesi
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            
+            question.addEventListener('click', function() {
+                // Diğer tüm öğeleri kapat
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                        const otherAnswer = otherItem.querySelector('.faq-answer');
+                        otherAnswer.style.maxHeight = null;
+                    }
+                });
+                
+                // Tıklanan öğeyi aç/kapat
+                item.classList.toggle('active');
+                const answer = item.querySelector('.faq-answer');
+                
+                if (item.classList.contains('active')) {
+                    answer.style.maxHeight = '1000px';
+                } else {
+                    answer.style.maxHeight = null;
+                }
+            });
+        });
+
+        // Kategori değiştirme fonksiyonalitesi
+        const categoryItems = document.querySelectorAll('.category-item');
+        const faqContainers = document.querySelectorAll('.faq-container');
+        
+        categoryItems.forEach(item => {
+            item.addEventListener('click', function() {
+                // Active class'ını değiştir
+                categoryItems.forEach(cat => {
+                    cat.classList.remove('active');
+                });
+                item.classList.add('active');
+                
+                // İlgili içeriği göster
+                const targetId = item.getAttribute('data-target');
+                
+                faqContainers.forEach(container => {
+                    container.style.display = 'none';
+                });
+                
+                document.getElementById(targetId).style.display = 'block';
+            });
+        });
+    </script>
+</body>
+</html>
